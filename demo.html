@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+   <html>
+   <head>
+   <title></title>
+   <meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   </head>
+   <body>
+
+   This is a test.
+
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+  <script type="text/javascript" src="contrib/gmap3.min.js"></script>
+  <script type="text/javascript" src="jquery.parkingmap.js"></script>
+
+   <script type="text/javascript">
+    $(document).ready(function() {
+         var map = new $.parkingMap($(".parking-map-widget-container"));
+         map.createMap();
+    });
+   </script>
+   <div class="parking-map-widget-container"></div>
+
+ </body>
+ </html>
