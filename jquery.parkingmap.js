@@ -50,7 +50,20 @@
         var init = function() {
             $.extend(plugin.settings, defaults, options);
             plugin.$el = $el;
-            // code goes here
+
+            plugin._iconMeta = {
+                size: new google.maps.Size(38,33),
+                shadow: {
+                    url: plugin.settings.MAIN_SPRITE,
+                    size: new google.maps.Size(53,23),
+                    origin: _spriteCoordinates('number_shadow'),
+                    anchor: new google.maps.Point(20,23),
+                    scaledSize: null
+                }
+            };
+            if (plugin.settings.HDPI) {
+                plugin._iconMeta.shadow.scaledSize = new google.maps.Size(477, 1098);
+            }
         }
 
         plugin.createMap = function() {
@@ -90,14 +103,26 @@
         };
         var _putListingsOnMap = function(listings) {
             var $el = plugin.$el;
+
             for (var i = 0; i < listings.length; i++) {
-                var marker = _getIcons(listings[i].price);
+                var icon = _getIcons(listings[i].price);
                 $el.gmap3({
                     marker: {
                         latLng: [ listings[i].lat, listings[i].lng ],
+                        data: { listing: listings[i], icon: icon },
                         options : {
-                            icon: marker.icons.normal,
-                            shadow: marker.meta.shadow
+                            icon: icon.normal,
+                            shadow: plugin._iconMeta.shadow
+                        },
+                        events : {
+                            mouseover: function(marker, event, context) {
+                                marker.setZIndex(999);
+                                marker.setIcon(context.data.icon.active);
+                            },
+                            mouseout : function(marker, event, context) {
+                                marker.setZIndex(998);
+                                marker.setIcon(context.data.icon.normal);
+                            }
                         }
                     }
                 });
@@ -179,22 +204,6 @@
 
         plugin._iconCache = {};
         var _getIcons = function(dollars) {
-            if (!plugin._iconMeta) {
-                plugin._iconMeta = {
-                    size: new google.maps.Size(38,33),
-                    shadow: {
-                        url: plugin.settings.MAIN_SPRITE,
-                        size: new google.maps.Size(53,23),
-                        origin: _spriteCoordinates('number_shadow'),
-                        anchor: new google.maps.Point(20,23),
-                        scaledSize: null
-                    }
-                };
-
-                if (plugin.settings.HDPI) {
-                    plugin._iconMeta.shadow.scaledSize = new google.maps.Size(477, 1098);
-                }
-            }
 
             if (! plugin._iconCache[dollars]) {
 
@@ -236,7 +245,7 @@
                 }
             }
 
-            return { meta: plugin._iconMeta, icons: plugin._iconCache[dollars] };
+            return plugin._iconCache[dollars];
         };
 
         init();
