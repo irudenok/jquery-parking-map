@@ -136,6 +136,9 @@
                             mouseout : function(marker, event, context) {
                                 marker.setZIndex(998);
                                 marker.setIcon(context.data.icon.normal);
+                            },
+                            click : function(marker, event, context) {
+                                window.location = context.data.listing.parkwhiz_url;
                             }
                         }
                     }
