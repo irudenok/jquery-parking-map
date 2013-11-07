@@ -12,101 +12,101 @@
 </thead>
 <tbody>
  <tr>
-  <td>`parkwhizKey` (required)</td>
+  <td><code>parkwhizKey</code> (required)</td>
   <td>string</td>
   <td>API key provided on http://www.parkwhiz.com/developers/ after signing up for an account.</td>
  </tr>
  <tr>
-  <td>`location` (required)</td>
+  <td><code>location</code> (required)</td>
   <td>
     Object with these keys:<br />
-    `destination` (string) street address
+    <code>destination</code> (string) street address
     <br />*OR*<br />
-    `lat` (number) and `lng` (number)
+    <code>lat</code> (number) and <code>lng</code> (number)
     <br />*OR*<br />
-    `venue` (string URL)
+    <code>venue</code> (string URL)
   </td>
   <td>
     The location for which the user will be looking for parking.
     <br />
-    e.g. `{ destination: "208 S. Jefferson St, Chicago, IL 60661" }`
+    e.g. <code>{ destination: "208 S. Jefferson St, Chicago, IL 60661" }</code>
     <br />*OR*<br />
-    `{ lat: 41.878598, lng: -87.638836 }`
+    <code>{ lat: 41.878598, lng: -87.638836 }</code>
     <br />*OR*<br />
-    `{ venue: "united-center-parking" }` (corresponding to https://www.parkwhiz.com/united-center-parking/)
+    <code>{ venue: "united-center-parking" }</code> (corresponding to https://www.parkwhiz.com/united-center-parking/)
   </td>
  </tr>
  <tr>
-  <td>`showTimePicker`</td>
+  <td><code>showTimePicker</code></td>
   <td>boolean, default true</td>
-  <td>This only applies if `location` is an address or lat/lng..  Should the date+time picker be shown?</td>
+  <td>This only applies if <code>location</code> is an address or lat/lng..  Should the date+time picker be shown?</td>
  </tr>
  <tr>
-  <td>`showChosenEvent`</td>
+  <td><code>showChosenEvent</code></td>
   <td>boolean, default true</td>
-  <td>This only applies if `location` is a venue.  Should the name of the current event be shown?</td>
+  <td>This only applies if <code>location</code> is a venue.  Should the name of the current event be shown?</td>
  </tr>
  <tr>
-  <td>`showLocationMarker`</td>
+  <td><code>showLocationMarker</code></td>
   <td>boolean, default true</td>
-  <td>Should a marker be shown on the `location` position?</td>
+  <td>Should a marker be shown on the <code>location</code> position?</td>
  </tr>
  <tr>
-  <td>`defaultTime`</td>
+  <td><code>defaultTime</code></td>
   <td>Object with these keys:
    <br />
-   `start` and `end` unix timestamps
+   <code>start</code> and <code>end</code> unix timestamps
    <br />*OR*<br />
-   `hours` number of hours
+   <code>hours</code> number of hours
    <br /><br />
-   Default is `{ hours: 3 }`.
+   Default is <code>{ hours: 3 }</code>.
   </td>
-  <td>This only applies if `location` is an address or lat/lng. <br /><br />e.g. `{ start: 1383847222, end: 1383858022 }` - specific time range.
+  <td>This only applies if <code>location</code> is an address or lat/lng. <br /><br />e.g. <code>{ start: 1383847222, end: 1383858022 }</code> - specific time range.
   <br />*OR*<br />
-  `{ hours: 6 }` from roughly now for a 6 hour duration. (start time will be the nearest hour or half hour).
+  <code>{ hours: 6 }</code> from roughly now for a 6 hour duration. (start time will be the nearest hour or half hour).
  </td>
  </tr>
  <tr>
-  <td>`event`</td>
+  <td><code>event</code></td>
   <td>string event URL</td>
-  <td>This only works if `location` is a venue.  If provided, the map will pre-load with price markers for the given event. Otherwise, if no event is chosen the map will load with "P" markers and require you to choose an event before seeing prices.
+  <td>This only works if <code>location</code> is a venue.  If provided, the map will pre-load with price markers for the given event. Otherwise, if no event is chosen the map will load with "P" markers and require you to choose an event before seeing prices.
   <br />
-  e.g. `"/2010-5-27-7pm-boston-red-sox-vs-kansas-city-royals/"`
+  e.g. <code>"/2010-5-27-7pm-boston-red-sox-vs-kansas-city-royals/"</code>
   </td>
  </tr>
  <tr>
-  <td>`loadFirstEvent`</td>
+  <td><code>loadFirstEvent</code></td>
   <td>boolean, default false</td>
-  <td>This only works if `location` is a venue.  If true, the first event for the given venue will be used to populate prices. Otherwise, if no event is chosen the map will load with "P" markers and require you to choose an event before seeing prices.</td>
+  <td>This only works if <code>location</code> is a venue.  If true, the first event for the given venue will be used to populate prices. Otherwise, if no event is chosen the map will load with "P" markers and require you to choose an event before seeing prices.</td>
  </tr>
  <tr>
-  <td>`showEventList`</td>
+  <td><code>showEventList</code></td>
   <td>boolean, default true</td>
-  <td>This only works if `location` was set to use a venue with `venue_id`.</td>
+  <td>This only works if <code>location</code> was set to a venue.</td>
  </tr>
  <tr>
-  <td>`width`</td>
+  <td><code>width</code></td>
   <td>CSS string</td>
-  <td>e.g. `90%`</td>
+  <td>e.g. <code>90%</code></td>
  </tr>
  <tr>
-  <td>`height`</td>
+  <td><code>height</code></td>
   <td>CSS string</td>
-  <td>e.g. `500px`</td>
+  <td>e.g. <code>500px</code></td>
  </tr>
  <tr>
-  <td>`zoom`</td>
+  <td><code>zoom</code></td>
   <td>number</td>
   <td>Zoom level as described here: https://developers.google.com/maps/documentation/javascript/tutorial</td>
  </tr>
  <tr>
-  <td>`additionalMarkers`</td>
+  <td><code>additionalMarkers</code></td>
   <td>Object</td>
   <td>
    Value will be passed through to http://gmap3.net/en/catalog/10-overlays/marker-41
    <br />
    e.g. 
-```
+   <pre><code>
    {
     values: [
       [49.28952958093682, 6.152559438984804],
@@ -131,7 +131,7 @@
         alert("Here is the default click event");
       }
     }
-```
+    </code></pre>
    </td>    
  </tr>
 </tbody>
